@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Análisis de plazos fijos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="index.js"></script>
+</head>
+
+<body>
+    <main>
+        <h1>Análisis de plazos fijos</h1>
+
+        <p class="sub">
+            Ingresá las tasas anuales (TNA %) de los últimos 3 años
+            de cada banco y compará dónde conviene invertir.
+        </p>
+
+        <form id="formulario">
+
+            <label class="capital">
+                Capital a invertir ($)
+                <input
+                    type="number"
+                    id="capital"
+                    value="850000"
+                    min="1"
+                    step="any"
+                    required
+                >
+            </label>
+
+            <div id="bancos" class="grid"></div>
+
+            <p id="error" class="error" role="alert"></p>
+
+            <div class="acciones">
+                <button type="submit">Calcular</button>
+                <button type="reset" id="limpiar" class="secundario">
+                    Limpiar
+                </button>
+            </div>
+
+        </form>
+
+        <section id="resultados" hidden>
+            <div id="recomendacion" class="recomendacion"></div>
+            <div id="detalle" class="grid"></div>
+        </section>
+
+    </main>
+</body>
+</html>

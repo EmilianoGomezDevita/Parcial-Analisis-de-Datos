@@ -1,0 +1,79 @@
+:root {
+  --fondo: #f4f6f8;
+  --tarjeta: #ffffff;
+  --texto: #1c2430;
+  --suave: #5d6b7a;
+  --borde: #d9dfe5;
+  --acento: #1f6feb;
+  --ok: #1a7f4b;
+  --ok-fondo: #e6f4ec;
+  --error: #c62828;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #12161c;
+    --tarjeta: #1b212a;
+    --texto: #e8edf2;
+    --suave: #9aa7b4;
+    --borde: #2c3541;
+    --acento: #4c8dff;
+    --ok: #4cc38a;
+    --ok-fondo: #173326;
+    --error: #ff6b6b;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+main { max-width: 960px; margin: 0 auto; padding: 24px 16px 48px; }
+h1 { margin: 0 0 4px; font-size: 1.8rem; }
+.sub { margin: 0 0 24px; color: var(--suave); }
+
+.grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.tarjeta {
+  background: var(--tarjeta);
+  border: 1px solid var(--borde);
+  border-radius: 12px;
+  padding: 16px;
+}
+.tarjeta h2 { margin: 0 0 12px; font-size: 1.1rem; }
+.tarjeta.ganador { border-color: var(--ok); box-shadow: 0 0 0 2px var(--ok); }
+
+label { display: block; font-size: 0.9rem; color: var(--suave); margin-bottom: 10px; }
+input {
+  display: block; width: 100%; margin-top: 4px; padding: 8px 10px;
+  font: inherit; color: var(--texto); background: var(--fondo);
+  border: 1px solid var(--borde); border-radius: 8px;
+}
+input:focus { outline: 2px solid var(--acento); outline-offset: 1px; }
+.capital { max-width: 280px; margin-bottom: 16px; }
+
+.acciones { display: flex; gap: 10px; margin-top: 16px; }
+button {
+  font: inherit; font-weight: 600; padding: 10px 20px; cursor: pointer;
+  border: 1px solid var(--acento); border-radius: 8px;
+  background: var(--acento); color: #fff;
+}
+button.secundario { background: transparent; color: var(--acento); }
+.error { color: var(--error); min-height: 1.4em; margin: 12px 0 0; }
+
+#resultados { margin-top: 32px; }
+.recomendacion {
+  background: var(--ok-fondo); border: 1px solid var(--ok);
+  border-radius: 12px; padding: 16px 20px; margin-bottom: 20px;
+}
+.recomendacion h2 { margin: 0 0 6px; color: var(--ok); font-size: 1.2rem; }
+.recomendacion p { margin: 2px 0; }
+
+.promedio { color: var(--suave); font-size: 0.9rem; margin: -6px 0 12px; }
+.tabla-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: right; padding: 6px 4px; border-bottom: 1px solid var(--borde); }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--suave); font-weight: 600; }
+tr.mejor td { color: var(--ok); font-weight: 700; }
