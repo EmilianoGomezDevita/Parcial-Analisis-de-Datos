@@ -1,5 +1,5 @@
 import {bancos} from "./banco.js";
-import {calcularPromedio} from "./calculos.js";
+import {calcularPromedio, inversionAnual} from "./calculos.js";
 
 const contenedorBancos = document.getElementById("bancos");
 
@@ -63,10 +63,16 @@ formulario.addEventListener("submit", function(event) {
 
         let promedio = calcularPromedio(tasa1, tasa2, tasa3);
 
+        const capital = document.getElementById("capital").value;
+        let montoFinal = inversionAnual(capital, promedio)
+        let ganacia = montoFinal - capital
+
         detalle.innerHTML += `
             <div class="tarjeta">
                 <h2>${banco}</h2>
                 <p>Promedio anual: ${promedio.toFixed(2)} %</p>
+                <p>Monto Final: ${montoFinal.toFixed(2)}$</p>
+                <p>Ganancia neta: ${ganacia.toFixed(2)}$</p>
             </div>
         `;
 
