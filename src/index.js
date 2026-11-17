@@ -41,6 +41,8 @@ formulario.addEventListener("submit", function (event) {
   error.textContent = "";
   detalle.innerHTML = "";
 
+  let todos = []
+
   bancos.forEach((banco, index) => {
     let tasa1 = document.getElementById(`banco${index}Anio1`).value;
     let tasa2 = document.getElementById(`banco${index}Anio2`).value;
@@ -73,6 +75,8 @@ formulario.addEventListener("submit", function (event) {
         modalidad.periodos,
       );
       const ganancia = montoFinal - capital;
+
+      todos.push({ banco, modalidad: modalidad.nombre, montoFinal, ganancia })
 
       filas += `
         <tr>
@@ -108,6 +112,20 @@ formulario.addEventListener("submit", function (event) {
     resultados.hidden = true;
   } else {
     resultados.hidden = false;
+    let mejor = todos[0];
+
+    for (let i = 1; i < todos.length; i++) {
+      if (todos[i].montoFinal > mejor.montoFinal) {
+        mejor = todos[i];
+      }
+    }
+
+    document.getElementById("recomendacion").innerHTML = `
+    <h2>Opcion recomendada</h2>
+    <p><strong>${mejor.banco}</strong> con modalidad <strong>${mejor.modalidad}</strong></p>
+    <p>Capital final: ${mejor.montoFinal.toFixed(2)}$</p>
+    <p>Ganancia: ${mejor.ganancia.toFixed(2)}$</p>
+    `
   }
 });
 
