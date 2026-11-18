@@ -81,8 +81,8 @@ formulario.addEventListener("submit", function (event) {
       filas += `
         <tr>
             <td>${modalidad.nombre}</td>
-            <td>${montoFinal.toFixed(2)}$</td>
-            <td>${ganancia.toFixed(2)}$</td>
+            <td>$${montoFinal.toLocaleString('es-AR', {minimumFractionDigits: 2,maximumFractionDigits: 2})}</td>
+            <td>$${ganancia.toLocaleString('es-AR', {minimumFractionDigits: 2,maximumFractionDigits: 2})}</td>
         </tr>
     `;
     });
@@ -90,7 +90,7 @@ formulario.addEventListener("submit", function (event) {
     detalle.innerHTML += `
     <div class="tarjeta">
         <h2>${banco}</h2>
-        <p class="promedio">Tasa anual promedio: ${promedio.toFixed(2)} %</p>
+        <p class="promedio">Tasa anual promedio: ${promedio.toLocaleString('es-AR', {minimumFractionDigits: 2,maximumFractionDigits: 2})} %</p>
         <div class="tabla-wrap">
             <table>
                 <thead>
@@ -123,8 +123,8 @@ formulario.addEventListener("submit", function (event) {
     document.getElementById("recomendacion").innerHTML = `
     <h2>Opcion recomendada</h2>
     <p><strong>${mejor.banco}</strong> con modalidad <strong>${mejor.modalidad}</strong></p>
-    <p>Capital final: ${mejor.montoFinal.toFixed(2)}$</p>
-    <p>Ganancia: ${mejor.ganancia.toFixed(2)}$</p>
+    <p>Capital final: $${mejor.montoFinal.toLocaleString('es-AR', {minimumFractionDigits: 2,maximumFractionDigits: 2})}</p>
+    <p>Ganancia: $${mejor.ganancia.toLocaleString('es-AR', {minimumFractionDigits: 2,maximumFractionDigits: 2})}</p>
     `
   }
 });
@@ -133,7 +133,3 @@ formulario.addEventListener("reset", function () {
   document.getElementById("resultados").hidden = true;
   document.getElementById("error").textContent = "";
 });
-
-console.log(calcularCapitalFinal(850000, 45, 1)); // 1232500
-console.log(calcularCapitalFinal(850000, 45, 4)); // alrededor de 1302000
-console.log(calcularCapitalFinal(850000, 45, 12)); // alrededor de 1322000
